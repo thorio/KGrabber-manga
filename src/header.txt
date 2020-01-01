@@ -1,0 +1,14 @@
+// ==UserScript==
+// @name          KGrabber-manga
+// @namespace     thorou
+// @version       ${version}
+// @description   KGrabber plugin for kissmanga.com
+// @author        Thorou
+// @license       GPL-3.0 - http://www.gnu.org/licenses/gpl-3.0.txt
+// @homepageURL   https://github.com/thorio/KGrabber-manga
+// @match         http*://kissmanga.com/*
+// @run-at        document-start
+// @grant         GM_xmlhttpRequest
+// @grant         GM_getValue
+// @grant         GM_setValue
+// ==/UserScript==
