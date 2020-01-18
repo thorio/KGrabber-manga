@@ -1,12 +1,12 @@
 const { Server, Site, Dictionary } = global.types,
-	CustomLinkTypes = require("./CustomLinkTypes");
+	CustomLinkTypes = require("./types/CustomLinkTypes");
 
 let servers = new Dictionary([
 	new Server("kissmanga", {
 		regex: null,
 		name: "kissmanga",
 		linkType: CustomLinkTypes.IMAGE_SEQUENCE,
-		customStep: "not implemented yet",
+		customStep: "mangaBegin",
 	}),
 ]);
 
