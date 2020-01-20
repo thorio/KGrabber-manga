@@ -52,8 +52,8 @@ function transform(func) {
 	});
 }
 
-function copy() {
-	return gulp.src(`${src_dir}/js/**/*`)
+function js() {
+	return gulp.src(`${src_dir}/js/**/!(package.json)`) // select all files in src/js/, except package.json
 		.pipe(strip()) // strip comments
 		.pipe(header("// src\\js\\${file.relative}\n")) // add info
 		.pipe(gulp.dest(`${build_dir}/js`));
@@ -97,11 +97,13 @@ function clean() {
 }
 
 // auto-build on file change
-function watch() {
+async function watch() {
 	watching = true;
+	await clean();
+	await build();
 	gulp.watch(src_dir, build);
 }
 
-const build = gulp.series(copy, css, html, bundle);
+const build = gulp.series(js, css, html, bundle);
 
-module.exports = { build, bundle, watch, clean };
+module.exports = { build, watch, clean };
