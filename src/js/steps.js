@@ -1,22 +1,29 @@
-const { linkDisplay } = global.ui,
-	statusManager = global.statusManager,
-	util = require("./util");
+/**
+ * @typedef {import("kgrabber-types/Status")} Status
+ */
 
-// eslint-disable-next-line no-unused-vars
-exports.mangaBegin = async (status, site) => {
+const util = require("./util"),
+	plugin = require("kgrabber-plugin");
+
+const linkRegexp = /lstImages\.push\(wrapKA\("(.+)"\)\);/g;
+
+/**
+ * @param {Status} status
+ */
+exports.mangaBegin = async (status) => {
+	const linkDisplay = plugin.ui.linkDisplay;
+
 	linkDisplay.show();
 	linkDisplay.showSpinner();
 	let progress = 0;
 	let func = async (episode) => {
 		let html = (await util.ajax.get(episode.kissLink + `&s=${status.serverID}`)).response;
 		let imageUrls = [];
-		let matches = html.matchAll(/lstImages\.push\(wrapKA\("(.+)"\)\);/g);
-		for (let match of matches) {
+		for (let match of html.matchAll(linkRegexp)) {
 			imageUrls.push(util.mangaCrypto.decrypt(match[1]));
 		}
 
 		episode.grabbedLink = imageUrls.join("|");
-		console.log(episode);
 		progress++;
 		linkDisplay.setSpinnerText(`${progress}/${promises.length}`);
 	};
@@ -27,6 +34,6 @@ exports.mangaBegin = async (status, site) => {
 	linkDisplay.setSpinnerText(`0/${promises.length}`);
 	await Promise.all(promises);
 	status.func = "defaultFinished";
-	statusManager.save();
+	plugin.statusManager.save();
 	linkDisplay.load();
 };

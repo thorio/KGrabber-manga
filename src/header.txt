@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          KGrabber-manga
+// @name          KGrabber-Plugin manga
 // @namespace     thorou
 // @version       ${version}
 // @description   KGrabber plugin for kissmanga.com

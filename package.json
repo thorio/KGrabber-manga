@@ -1,5 +1,5 @@
 {
-	"name": "KGrabber-manga",
+	"name": "kgrabber-plugin-manga",
 	"version": "1.0.0",
 	"description": "KGrabber plugin for kissmanga.com",
 	"dependencies": {},

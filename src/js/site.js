@@ -1,4 +1,4 @@
-const { Server, Site, Dictionary } = global.types,
+const { Server, Site, Dictionary } = require("kgrabber-types"),
 	CustomLinkTypes = require("./types/CustomLinkTypes");
 
 let servers = new Dictionary([

@@ -1,3 +1,5 @@
+const log = require("./log");
+
 let scriptsLoaded = false;
 
 function loadScript(name) {
@@ -5,12 +7,13 @@ function loadScript(name) {
 		.appendTo("head");
 }
 
+// TODO load scripts asynchronously
 // loads the scripts kissmanga uses to decrypt their links
 function loadScripts() {
 	if (!scriptsLoaded) {
 		loadScript("ca");
 		loadScript("lo");
-		console.log("loading scripts");
+		log.log("loading scripts");
 		scriptsLoaded = true;
 	}
 }

@@ -1,15 +1,10 @@
-const pluginFramework = require("./pluginFramework");
+const plugin = require("kgrabber-plugin"),
+	site = require("./site"),
+	steps = require("./steps"),
+	exporters = require("./exporters");
 
-pluginFramework((pluginContext) => {
-	// don't want to keep snaking these through to everything
-	global.types = pluginContext.types;
-	global.ui = pluginContext.ui;
-	global.preferences = pluginContext.preferences;
-	global.statusManager = pluginContext.statusManager;
-
-	const site = require("./site"),
-		steps = require("./steps");
-
-	pluginContext.addSite(site);
-	pluginContext.addSteps(steps);
+plugin.init(() => {
+	plugin.addSites(site);
+	plugin.addSteps(steps);
+	plugin.addExporters(...exporters);
 });

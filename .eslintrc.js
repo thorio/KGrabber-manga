@@ -18,7 +18,7 @@ module.exports = {
 		"no-await-in-loop": "warn",
 		"dot-location": ["warn", "property"],
 		"semi": "warn",
-		"no-restricted-globals": ["error", "status"],
+		"no-restricted-globals": ["error", "status", "Plugin"],
 		"comma-dangle": ["warn", {
 			"arrays": "always-multiline",
 			"objects": "always-multiline",
