@@ -24,12 +24,6 @@ function readFile(path) {
 	return new Promise((resolve) => fs.readFile(path, (_err, data) => resolve(data.toString())));
 }
 
-function timeout(duration) {
-	return new Promise((res) => {
-		setTimeout(() => res(), duration);
-	});
-}
-
 // read the header file
 async function getHeader() {
 	return readFile(header_path);
@@ -105,9 +99,6 @@ function clean() {
 // auto-build on file change
 async function watch() {
 	watching = true;
-	await clean();
-	await timeout(1000);
-	await build();
 	gulp.watch(src_dir, build);
 }
 
