@@ -2,7 +2,10 @@
 	"name": "kgrabber-plugin-manga",
 	"version": "1.0.0",
 	"description": "KGrabber plugin for kissmanga.com",
-	"dependencies": {},
+	"dependencies": {
+		"kgrabber-plugin": "^1.0.1",
+		"kgrabber-types": "^1.0.1"
+	},
 	"devDependencies": {
 		"browserify": "^16.5.0",
 		"del": "^5.1.0",
